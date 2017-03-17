@@ -18,7 +18,7 @@ void showMatrix(){
   for (size_t i = 0; i < n; i++) {
     printf("[ " );
     for (size_t j = 0; j < n; j++) {
-      printf(" %i ", matrix[i][j]);
+      printf(" %g ", matrix[i][j]);
     }
     printf(" ]\n " );
   }
