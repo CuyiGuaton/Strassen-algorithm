@@ -167,19 +167,18 @@ void strassen(int n, double **A, double **B, double **C) {
   }
 
   //Si se llega a n0 se acaba la recursividad
-  if(n == 16) //2-order
+  if(n <= 4) //2-order
   {
   	matrixMultiply(n, A, B, C);
 
   } else {
   	for(i=0; i<n/2; i++)
   		for(j=0; j<n/2; j++){
-              printf("\tG\n");
-        			A11[i][j] = A[i][j];		printf("\tG1\n");
-          		A12[i][j] = A[i][j+n/2];	printf("\tG2\n");
-          		A21[i][j] = A[i+n/2][j];	printf("\tG3\n");
-          		A22[i][j] = A[i+n/2][j+n/2];	printf("\tG4\n");
-              printf("\tY\n");
+        			A11[i][j] = A[i][j];
+          		A12[i][j] = A[i][j+n/2];
+          		A21[i][j] = A[i+n/2][j];
+          		A22[i][j] = A[i+n/2][j+n/2];
+
           		B11[i][j] = B[i][j];
           		B12[i][j] = B[i][j+n/2];
           		B21[i][j] = B[i+n/2][j];
@@ -250,7 +249,7 @@ void strassen(int n, double **A, double **B, double **C) {
       //U6 = U3 - U4
       matrixSub(n/2,U3,P4,U6);
 
-      //U7 + P5
+      //U7 = U3 + P5
       matrixSum(n/2,U3,P5,U7);
 
 
@@ -278,4 +277,12 @@ void strassen(int n, double **A, double **B, double **C) {
         //
         // printf("\tB22\n");
         // showMatrix(n,B22);
+        for(i=0; i<n/2; i++) {
+           for(j=0; j<n/2; j++) {
+              C[i][j] = U1[i][j];
+              C[i][j+n/2] = U5[i][j];
+              C[i+n/2][j] = U6[i][j];
+              C[i+n/2][j+n/2] = U7[i][j];
+           }
+        }
 }
