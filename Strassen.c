@@ -16,7 +16,7 @@ void generateRandomMatrix(int n, double **matrix);
 void showMatrix(int n, double **matrix);
 void matrixMultiply(int n, double **A, double **B, double **C);
 void matrixSum(int n, double **A, double **B, double **C);
-void strassen(int n, double **A, double **B, double **C) ;
+void strassen(int n, double **A, double **B, double **C);
 void matrixSub(int n, double **A, double **B, double **result);
 //---------/ Funciones /-----------------------------------------------------------------------------//
 
@@ -99,7 +99,7 @@ void strassen(int n, double **A, double **B, double **C) {
   int i,j;
   double **A11, **A12, **A21, **A22, **B11, **B12, **B21, **B22, **S1,**S2,**S3,**S4,**T1,**T2,**T3,**T4,**P1,**P2, **P3,**P4,**P5,**P6,**P7,**U1,**U2,**U3,**U4,**U5,**U6,**U7;
 
-  //Se declaran las submatrices a usar
+  //Se declaran las submatrices a utilizar
   A11 = (double **)malloc ((n/2)*sizeof(double *));
   A12 = (double **)malloc ((n/2)*sizeof(double *));
   A21 = (double **)malloc ((n/2)*sizeof(double *));
@@ -174,7 +174,8 @@ void strassen(int n, double **A, double **B, double **C) {
   } else {
   	for(i=0; i<n/2; i++)
   		for(j=0; j<n/2; j++){
-        			A11[i][j] = A[i][j];
+//----/ Se dan los valores a las SubMatrices /----------------------------//	
+			A11[i][j] = A[i][j];
           		A12[i][j] = A[i][j+n/2];
           		A21[i][j] = A[i+n/2][j];
           		A22[i][j] = A[i+n/2][j+n/2];
@@ -182,8 +183,41 @@ void strassen(int n, double **A, double **B, double **C) {
           		B11[i][j] = B[i][j];
           		B12[i][j] = B[i][j+n/2];
           		B21[i][j] = B[i+n/2][j];
-              B22[i][j] = B[i+n/2][j+n/2];
+              		B22[i][j] = B[i+n/2][j+n/2];
      	}
+
+//----/ Muestra las subMatrices /---------------------------------//
+
+  printf("\n SubMatrices de "); printf("%i",(n/2)); printf("x"); printf("%i",(n/2)); printf(":"); printf("\n\n");
+
+  printf("\tA11\n");
+  showMatrix((n/2),A11);
+
+  printf("\tA12\n");
+  showMatrix((n/2),A12);
+
+  printf("\tA21\n");
+  showMatrix((n/2),A21);
+
+  printf("\tA22\n");
+  showMatrix((n/2),A22);
+
+  printf("\tB11\n");
+  showMatrix((n/2),B11);
+
+  printf("\tB12\n");
+  showMatrix((n/2),B12);
+
+  printf("\tB21\n");
+  showMatrix((n/2),B21);
+
+  printf("\tB22\n");
+  showMatrix((n/2),B22);
+
+  printf("\n");
+
+//----/ Primera secuencia de sumas/restas de matrices /----------------------//
+
       //S1 = A21 + A22
       matrixSum(n/2,A21,A22,S1);
 
@@ -208,7 +242,8 @@ void strassen(int n, double **A, double **B, double **C) {
       //T4 = T2 - B21
       matrixSub(n/2,T2,B21,T4);
 
-      //De aquí empiezan las multiplicaciones
+//----/ Secuencia de productos de matrices /----------------------//
+
       //P1 = A11*B11
       strassen(n/2, A11,B11,P1);
 
@@ -230,7 +265,8 @@ void strassen(int n, double **A, double **B, double **C) {
       //P7 = S3*T3
       strassen(n/2,S3,T3,P7);
 
-      //Aquí saco los U
+//----/ Segunda secuencia de sumas/restas de matrices / Sacamos valores de los U /----------------------//
+
       //U1 = P1 + P2
       matrixSum(n/2,P1,P2,U1);
 
@@ -251,6 +287,8 @@ void strassen(int n, double **A, double **B, double **C) {
 
       //U7 = U3 + P5
       matrixSum(n/2,U3,P5,U7);
+
+//----/ Obtenemos el producto AB /--------------------------------------------------------------//
 
         for(i=0; i<n/2; i++) {
            for(j=0; j<n/2; j++) {
