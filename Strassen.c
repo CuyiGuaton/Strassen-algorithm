@@ -167,7 +167,7 @@ void strassen(int n, double **A, double **B, double **C) {
   }
 
   //Si se llega a n0 se acaba la recursividad
-  if(n <= 4) //2-order
+  if(n < 16) //2-order
   {
   	matrixMultiply(n, A, B, C);
 
@@ -244,6 +244,31 @@ void strassen(int n, double **A, double **B, double **C) {
 
 //----/ Secuencia de productos de matrices /----------------------//
 
+  if((n/4) < 16) //2-order
+  {
+      //P1 = A11*B11
+      matrixMultiply(n/2, A11,B11,P1);
+
+      //P2 = A12*B21
+      matrixMultiply(n/2,A12,B21,P2);
+
+      //P3 = S4*B22
+      matrixMultiply(n/2,S4,B22,P3);
+
+      //P4 = A22*T4
+      matrixMultiply(n/2,A22,T4,P4);
+
+      //P5 = A22*T4
+      matrixMultiply(n/2,S1,T1,P5);
+
+      //P6 = S2*T2
+      matrixMultiply(n/2,S2,T2,P6);
+
+      //P7 = S3*T3
+      matrixMultiply(n/2,S3,T3,P7);
+  }
+  else
+  {
       //P1 = A11*B11
       strassen(n/2, A11,B11,P1);
 
@@ -264,6 +289,7 @@ void strassen(int n, double **A, double **B, double **C) {
 
       //P7 = S3*T3
       strassen(n/2,S3,T3,P7);
+  }
 
 //----/ Segunda secuencia de sumas/restas de matrices / Sacamos valores de los U /----------------------//
 
