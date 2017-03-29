@@ -1,3 +1,5 @@
+//https://gist.github.com/wzpan/6504468
+// https://github.com/sajjadpoores/strassen_matrix_multiplication3/blob/master/strassen.cpp
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
