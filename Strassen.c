@@ -252,31 +252,6 @@ void strassen(int n, double **A, double **B, double **C) {
       //U7 = U3 + P5
       matrixSum(n/2,U3,P5,U7);
 
-
-  }
-        // printf("\tA11\n");
-        // showMatrix(n,A11);
-        //
-        // printf("\tA12\n");
-        // showMatrix(n,A12);
-        //
-        // printf("\tA21\n");
-        // showMatrix(n,A21);
-        //
-        // printf("\tA22\n");
-        // showMatrix(n,A22);
-        //
-        // printf("\tB11\n");
-        // showMatrix(n,B11);
-        //
-        // printf("\tB12\n");
-        // showMatrix(n,B12);
-        //
-        // printf("\tB21\n");
-        // showMatrix(n,B21);
-        //
-        // printf("\tB22\n");
-        // showMatrix(n,B22);
         for(i=0; i<n/2; i++) {
            for(j=0; j<n/2; j++) {
               C[i][j] = U1[i][j];
@@ -285,4 +260,5 @@ void strassen(int n, double **A, double **B, double **C) {
               C[i+n/2][j+n/2] = U7[i][j];
            }
         }
+    }
 }
