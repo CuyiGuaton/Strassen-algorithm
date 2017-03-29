@@ -90,12 +90,14 @@ int main(int argc, char const *argv[]){
 
   strassen(n, A, B, C);
 
+  printf("\tC\n");
+  showMatrix(n,C);
   return 0;
 }
 
 void strassen(int n, double **A, double **B, double **C) {
   int i,j;
-  double **A11, **A12, **A21, **A22, **B11, **B12, **B21, **B22, **S1,**S2,**S3,**S4,**T1,**T2,**T3,**T4,**P1,**P2, **P3,**P4,**P5,**P7,**U1,**U2,**U3,**U4,**U5,**U6,**U7;
+  double **A11, **A12, **A21, **A22, **B11, **B12, **B21, **B22, **S1,**S2,**S3,**S4,**T1,**T2,**T3,**T4,**P1,**P2, **P3,**P4,**P5,**P6,**P7,**U1,**U2,**U3,**U4,**U5,**U6,**U7;
 
   //Se declaran las submatrices a usar
   A11 = (double **)malloc ((n/2)*sizeof(double *));
@@ -114,6 +116,13 @@ void strassen(int n, double **A, double **B, double **C) {
   T2 = (double **)malloc ((n/2)*sizeof(double *));
   T3 = (double **)malloc ((n/2)*sizeof(double *));
   T4 = (double **)malloc ((n/2)*sizeof(double *));
+  P1 = (double **)malloc ((n/2)*sizeof(double *));
+  P2 = (double **)malloc ((n/2)*sizeof(double *));
+  P3 = (double **)malloc ((n/2)*sizeof(double *));
+  P4 = (double **)malloc ((n/2)*sizeof(double *));
+  P5 = (double **)malloc ((n/2)*sizeof(double *));
+  P6 = (double **)malloc ((n/2)*sizeof(double *));
+  P7 = (double **)malloc ((n/2)*sizeof(double *));
   U1 = (double **)malloc ((n/2)*sizeof(double *));
   U2 = (double **)malloc ((n/2)*sizeof(double *));
   U3 = (double **)malloc ((n/2)*sizeof(double *));
@@ -141,6 +150,13 @@ void strassen(int n, double **A, double **B, double **C) {
     T2[i] = (double *)malloc ((n/2)*sizeof(double *));
     T3[i] = (double *)malloc ((n/2)*sizeof(double *));
     T4[i] = (double *)malloc ((n/2)*sizeof(double *));
+    P1[i] = (double *)malloc ((n/2)*sizeof(double *));
+    P2[i] = (double *)malloc ((n/2)*sizeof(double *));
+    P3[i] = (double *)malloc ((n/2)*sizeof(double *));
+    P4[i] = (double *)malloc ((n/2)*sizeof(double *));
+    P5[i] = (double *)malloc ((n/2)*sizeof(double *));
+    P6[i] = (double *)malloc ((n/2)*sizeof(double *));
+    P7[i] = (double *)malloc ((n/2)*sizeof(double *));
     U1[i] = (double *)malloc ((n/2)*sizeof(double *));
     U2[i] = (double *)malloc ((n/2)*sizeof(double *));
     U3[i] = (double *)malloc ((n/2)*sizeof(double *));
@@ -151,16 +167,13 @@ void strassen(int n, double **A, double **B, double **C) {
   }
 
   //Si se llega a n0 se acaba la recursividad
-  if(n == 2) //2-order
+  if(n == 16) //2-order
   {
   	matrixMultiply(n, A, B, C);
 
   } else {
-
   	for(i=0; i<n/2; i++)
-  	{printf("\tT\n");
-  		for(j=0; j<n/2; j++)
-  		{
+  		for(j=0; j<n/2; j++){
               printf("\tG\n");
         			A11[i][j] = A[i][j];		printf("\tG1\n");
           		A12[i][j] = A[i][j+n/2];	printf("\tG2\n");
@@ -172,30 +185,97 @@ void strassen(int n, double **A, double **B, double **C) {
           		B21[i][j] = B[i+n/2][j];
               B22[i][j] = B[i+n/2][j+n/2];
      	}
-    }
-  }
+      //S1 = A21 + A22
+      matrixSum(n/2,A21,A22,S1);
 
-    // printf("\tA11\n");
-    // showMatrix(n,A11);
-    //
-    // printf("\tA12\n");
-    // showMatrix(n,A12);
-    //
-    // printf("\tA21\n");
-    // showMatrix(n,A21);
-    //
-    // printf("\tA22\n");
-    // showMatrix(n,A22);
-    //
-    // printf("\tB11\n");
-    // showMatrix(n,B11);
-    //
-    // printf("\tB12\n");
-    // showMatrix(n,B12);
-    //
-    // printf("\tB21\n");
-    // showMatrix(n,B21);
-    //
-    // printf("\tB22\n");
-    // showMatrix(n,B22);
+      //S2 = S1 - A11
+      matrixSub(n/2,S1,A11,S2);
+
+      //S3 = A11 - A21
+      matrixSub(n/2,A11,A21,S3);
+
+      //S4 = A12 - S2
+      matrixSub(n/2,A12,S2,S4);
+
+      //T1 = B12 - B11
+      matrixSub(n/2,B12,B11,T1);
+
+      //T2 = B22 - T1
+      matrixSub(n/2,B22,T1,T2);
+
+      //T3 = B22 - B12
+      matrixSub(n/2,B22,B12,T3);
+
+      //T4 = T2 - B21
+      matrixSub(n/2,T2,B21,T4);
+
+      //De aquí empiezan las multiplicaciones
+      //P1 = A11*B11
+      strassen(n/2, A11,B11,P1);
+
+      //P2 = A12*B21
+      strassen(n/2,A12,B21,P2);
+
+      //P3 = S4*B22
+      strassen(n/2,S4,B22,P3);
+
+      //P4 = A22*T4
+      strassen(n/2,A22,T4,P4);
+
+      //P5 = A22*T4
+      strassen(n/2,S1,T1,P5);
+
+      //P6 = S2*T2
+      strassen(n/2,S2,T2,P6);
+
+      //P7 = S3*T3
+      strassen(n/2,S3,T3,P7);
+
+      //Aquí saco los U
+      //U1 = P1 + P2
+      matrixSum(n/2,P1,P2,U1);
+
+      //U2 = P1 + P6
+      matrixSum(n/2,P1,P6,U2);
+
+      //U3 = U2 + P7
+      matrixSum(n/2,U2,P7,U3);
+
+      //U4 = U2 + P5
+      matrixSum(n/2,U2,P5,U4);
+
+      //U5 = U4 + P3
+      matrixSum(n/2,U4,P3,U5);
+
+      //U6 = U3 - U4
+      matrixSub(n/2,U3,P4,U6);
+
+      //U7 + P5
+      matrixSum(n/2,U3,P5,U7);
+
+
+  }
+        // printf("\tA11\n");
+        // showMatrix(n,A11);
+        //
+        // printf("\tA12\n");
+        // showMatrix(n,A12);
+        //
+        // printf("\tA21\n");
+        // showMatrix(n,A21);
+        //
+        // printf("\tA22\n");
+        // showMatrix(n,A22);
+        //
+        // printf("\tB11\n");
+        // showMatrix(n,B11);
+        //
+        // printf("\tB12\n");
+        // showMatrix(n,B12);
+        //
+        // printf("\tB21\n");
+        // showMatrix(n,B21);
+        //
+        // printf("\tB22\n");
+        // showMatrix(n,B22);
 }
