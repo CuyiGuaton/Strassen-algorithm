@@ -30,9 +30,11 @@ void showMatrix(int n, double **matrix){
 
 void matrixMultiply(int n, double **A, double **B, double **C){
   for(int i=0; i<n; i++)
-      for(int j=0; j<n; j++)
+      for(int j=0; j<n; j++){
+        C[i][j]=0;
           for(int k=0; k<n; k++)
               C[i][j]+=A[i][k]*B[k][j];
+            }
 }
 
 void matrixSum(int n, double **A, double **B, double **C){
@@ -45,25 +47,26 @@ void matrixSum(int n, double **A, double **B, double **C){
 void addSubMatrix(int n, double **A, double  **B,double **A11, double **A12, double **A21, double **A22, double **B11, double **B12, double **B21, double **B22, double **C){
 int i,j;
 if(n == 2) //2-order
-{  
+{
 	matrixMultiply(n, A, B, C);
-     
+
 } else {
 
-	for(i=0; i<n/2; i++) 
+	for(i=0; i<n/2; i++)
 	{printf("\tT\n");
-		for(j=0; j<n/2; j++) 
-		{  printf("\tG\n");
-			A11[i][j] = A[i][j];		printf("\tG1\n");
-              		A12[i][j] = A[i][j+n/2];	printf("\tG2\n");
-              		A21[i][j] = A[i+n/2][j];	printf("\tG3\n");
-              		A22[i][j] = A[i+n/2][j+n/2];	printf("\tG4\n");
-                printf("\tY\n");
-              		B11[i][j] = B[i][j];
-              		B12[i][j] = B[i][j+n/2];
-              		B21[i][j] = B[i+n/2][j];
-             	 	B22[i][j] = B[i+n/2][j+n/2];    
-           	}        
+		for(j=0; j<n/2; j++)
+		{
+            printf("\tG\n");
+      			A11[i][j] = A[i][j];		printf("\tG1\n");
+        		A12[i][j] = A[i][j+n/2];	printf("\tG2\n");
+        		A21[i][j] = A[i+n/2][j];	printf("\tG3\n");
+        		A22[i][j] = A[i+n/2][j+n/2];	printf("\tG4\n");
+            printf("\tY\n");
+        		B11[i][j] = B[i][j];
+        		B12[i][j] = B[i][j+n/2];
+        		B21[i][j] = B[i+n/2][j];
+            B22[i][j] = B[i+n/2][j+n/2];
+           	}
        	 }
 }
 }
@@ -91,10 +94,19 @@ int main(int argc, char const *argv[]){
 
   for (int i=0;i<n;i++)
   {
-	A[i] = (double *) malloc (n*sizeof(double *));	B[i] = (double *) malloc (n*sizeof(double *));
+  	A[i] = (double *) malloc (n*sizeof(double *));
+    B[i] = (double *) malloc (n*sizeof(double *));
+    A11[i] = (double *)malloc ((n/2)*sizeof(double *));
+    A12[i] = (double *)malloc ((n/2)*sizeof(double *));
+    A21[i] = (double *)malloc ((n/2)*sizeof(double *));
+    A22[i] = (double *)malloc ((n/2)*sizeof(double *));
+    B11[i] = (double *)malloc ((n/2)*sizeof(double *));
+    B12[i] = (double *)malloc ((n/2)*sizeof(double *));
+    B21[i] = (double *)malloc ((n/2)*sizeof(double *));
+    B22[i] = (double *)malloc ((n/2)*sizeof(double *));
   }
 
-  generateRandomMatrix(n,A);			
+  generateRandomMatrix(n,A);
 
   generateRandomMatrix(n,B);
 
