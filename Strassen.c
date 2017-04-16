@@ -9,23 +9,25 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
+#include <time.h>
 //---------/ Declaración de Funciones /-----------------------------------------------------------------------------//
 
 void generateRandomMatrix(int n, double **matrix);
 void showMatrix(int n, double **matrix);
 void matrixMultiply(int n, double **A, double **B, double **C);
 void matrixSum(int n, double **A, double **B, double **C);
-void strassen(int n, double **A, double **B, double **C);
+void strassen(int n, double **A, double **B, double **C,int n0);
 void matrixSub(int n, double **A, double **B, double **result);
 //---------/ Funciones /-----------------------------------------------------------------------------//
 
+//Generate a random matrix
 void generateRandomMatrix(int n, double **matrix){
   for (size_t i = 0; i < n; i++)
     for (size_t j = 0; j < n; j++)
       matrix[i][j] = rand() % 10;
 }
 
+//Show a matrix
 void showMatrix(int n, double **matrix){
   for (size_t i = 0; i < n; i++) {
     if (i==0){printf(" [ " );}else{printf("[ " );}
@@ -36,7 +38,7 @@ void showMatrix(int n, double **matrix){
   }
 }
 
-//Multiplica matgrices
+//Multuplu two matrix with the classic algorithm
 void matrixMultiply(int n, double **A, double **B, double **result){
   for(int i=0; i<n; i++)
       for(int j=0; j<n; j++){
@@ -46,14 +48,14 @@ void matrixMultiply(int n, double **A, double **B, double **result){
             }
 }
 
-//Suma matries
+//A + B
 void matrixSum(int n, double **A, double **B, double **result){
   for(int i=0; i<n; i++)
       for(int j=0; j<n; j++)
               result[i][j] = A[i][j] + B[i][j];
 }
 
-//Resta matrix
+//A - B
 void matrixSub(int n, double **A, double **B, double **result){
   for(int i=0; i<n; i++)
       for(int j=0; j<n; j++)
@@ -64,9 +66,10 @@ void matrixSub(int n, double **A, double **B, double **result){
 
 int main(int argc, char const *argv[]){
   int n = atoi(argv[1]);
-
+  int n0= atoi(argv[2]);
   double **A, **B, **C;
-
+  clock_t start;
+  clock_t end;
   //Principal matrix
   A = (double **)malloc (n*sizeof(double *));
   B = (double **)malloc (n*sizeof(double *));
@@ -78,24 +81,29 @@ int main(int argc, char const *argv[]){
     B[i] = (double *) malloc (n*sizeof(double *));
     C[i] = (double *) malloc (n*sizeof(double *));
   }
-  generateRandomMatrix(n,A);
 
+  generateRandomMatrix(n,A);
   generateRandomMatrix(n,B);
 
-  printf("\tA\n");
+  printf("\tMatrix A:\n");
   showMatrix(n,A);
 
-  printf("\tB\n");
+  printf("\tMatrix B:\n");
   showMatrix(n,B);
 
-  strassen(n, A, B, C);
+  start = clock();
+  strassen(n, A, B, C,n0);
+  end = clock();
 
   printf("\tC\n");
   showMatrix(n,C);
+
+  printf("\n time: %f", (double)(end - start));
+
   return 0;
 }
 
-void strassen(int n, double **A, double **B, double **C) {
+void strassen(int n, double **A, double **B, double **C,int n0) {
   int i,j;
   double **A11, **A12, **A21, **A22, **B11, **B12, **B21, **B22, **S1,**S2,**S3,**S4,**T1,**T2,**T3,**T4,**P1,**P2, **P3,**P4,**P5,**P6,**P7,**U1,**U2,**U3,**U4,**U5,**U6,**U7;
 
@@ -167,14 +175,14 @@ void strassen(int n, double **A, double **B, double **C) {
   }
 
   //Si se llega a n0 se acaba la recursividad
-  if(n <= 16) //2-order
+  if(n <= n0) //2-order
   {
   	matrixMultiply(n, A, B, C);
 
   } else {
   	for(i=0; i<n/2; i++)
   		for(j=0; j<n/2; j++){
-//----/ Se dan los valores a las SubMatrices /----------------------------//	
+//----/ Se dan los valores a las SubMatrices /----------------------------//
 			A11[i][j] = A[i][j];
           		A12[i][j] = A[i][j+n/2];
           		A21[i][j] = A[i+n/2][j];
@@ -187,7 +195,7 @@ void strassen(int n, double **A, double **B, double **C) {
      	}
 
 //----/ Muestra las subMatrices /---------------------------------//
-
+/*
   printf("\n SubMatrices de "); printf("%i",(n/2)); printf("x"); printf("%i",(n/2)); printf(":"); printf("\n\n");
 
   printf("\tA11\n");
@@ -215,7 +223,7 @@ void strassen(int n, double **A, double **B, double **C) {
   showMatrix((n/2),B22);
 
   printf("\n");
-
+*/
 //----/ Primera secuencia de sumas/restas de matrices /----------------------//
 
       //S1 = A21 + A22
@@ -244,7 +252,7 @@ void strassen(int n, double **A, double **B, double **C) {
 
 //----/ Secuencia de productos de matrices /----------------------//
 
-  if((n/4) <= 16) //2-order
+  if((n/4) <= n0) //2-order
   {
       //P1 = A11*B11
       matrixMultiply(n/2, A11,B11,P1);
@@ -270,25 +278,25 @@ void strassen(int n, double **A, double **B, double **C) {
   else
   {
       //P1 = A11*B11
-      strassen(n/2, A11,B11,P1);
+      strassen(n/2, A11,B11,P1,n0);
 
       //P2 = A12*B21
-      strassen(n/2,A12,B21,P2);
+      strassen(n/2,A12,B21,P2,n0);
 
       //P3 = S4*B22
-      strassen(n/2,S4,B22,P3);
+      strassen(n/2,S4,B22,P3,n0);
 
       //P4 = A22*T4
-      strassen(n/2,A22,T4,P4);
+      strassen(n/2,A22,T4,P4,n0);
 
       //P5 = A22*T4
-      strassen(n/2,S1,T1,P5);
+      strassen(n/2,S1,T1,P5,n0);
 
       //P6 = S2*T2
-      strassen(n/2,S2,T2,P6);
+      strassen(n/2,S2,T2,P6,n0);
 
       //P7 = S3*T3
-      strassen(n/2,S3,T3,P7);
+      strassen(n/2,S3,T3,P7,n0);
   }
 
 //----/ Segunda secuencia de sumas/restas de matrices / Sacamos valores de los U /----------------------//
