@@ -1,0 +1,255 @@
+\documentclass[12pt,letterpaper]{scrartcl}
+\usepackage{lipsum}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage[left=3cm,right=2.5cm,top=2.5cm,bottom=2.5cm]{geometry}
+\usepackage[]{algorithm2e}
+\author{Don cuyi}
+
+\newcommand{\A}[1]{A_{#1}}
+%\cof{11}{\alpha}{0}{\alpha}{-\beta}
+
+%Color
+\usepackage{color}
+\definecolor{nred}{RGB}{174,49,54}
+\definecolor{nblue}{RGB}{86,99,146}
+\definecolor{nalgo}{RGB}{188,139,76}
+\usepackage{sectsty}
+\sectionfont{\color{nred}}
+\subsectionfont{\color{nblue}}
+\subsubsectionfont{\color{nalgo}}
+
+%Librías tikz
+\usepackage{pgf,tikz}
+\usepackage{mathrsfs}
+\usetikzlibrary{arrows}
+\usetikzlibrary[patterns]
+\newcommand{\degre}{\ensuremath{^\circ}}
+\definecolor{qqwuqq}{rgb}{0.,0.39215686274509803,0.}
+\definecolor{ffttww}{rgb}{1.,0.2,0.4}
+%Hipervinculos
+\usepackage{hyperref}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{}
+\fancyhead[C]{Licenciatura en ciencia de la computación}
+\fancyhead[R]{USACH}
+
+%interlineado
+\renewcommand{\baselinestretch}{1.2}
+
+%\bibitem{Yahoo} \textsc{Andres G} (2009),
+%\textbf{¿Generar números aleatorios negativos en Lenguaje C?} En \textsc{Yahoo! respuestas}
+%Recuperado el el 23 del julio del 2014
+%\url{https://es.answers.yahoo.com/question/index?qid=20091121055249AAUQH3N}
+
+\newcommand{\biblio}[7]{
+\bibitem{#1} \textsc{#2} (#3),
+\textbf{#4} En \textsc{#5}
+Recuperado el #6
+\url{#7}
+}
+
+% Last, F. M. (Year Published) Book. City, State: Publisher.
+\newcommand{\book}[5]{
+\bibitem{#1} \textsc{#2} (#3),
+\textbf{#4}  \textsc{#5} Estado: Publicado
+}
+
+\begin{document}
+
+\begin{titlepage}
+
+\begin{center}
+
+{\Large { Licenciatura en ciencia de la computación} }
+
+\includegraphics[scale=1]{UDSCNRJ}
+\\[1cm]
+
+{\Huge \textsc{Ciclo minimo y Ciclo de Hamilton}}\\[0.7cm]
+
+{\huge  Matemática Computacional}\\[2cm]
+
+
+\begin{minipage}[l]{0.4\textwidth}
+	\begin{flushleft}
+	\linespread{1}
+		\textbf{\textsf{Profesor:}}\\
+		\large Nicolas Thériault
+	\end{flushleft}
+\end{minipage}
+\begin{minipage}[l]{0.4\textwidth}
+
+	\begin{flushright}
+
+		\textbf{\textsf{Autor:}}\\
+		\linespread{1}
+		\large Sergio Salinas\\
+		\large Danilo Abellá\\
+
+	\end{flushright}
+\end{minipage}
+
+\end{center}
+
+\end{titlepage}
+
+
+
+\newpage
+
+\tableofcontents
+
+\newpage
+\section{Introducción}
+
+\section{Análisis teorico}
+
+Dada la multiplicación de dos matrices  A y B
+$$
+AB =
+\begin{pmatrix}
+A_{11} & A_{12} \\
+A_{21} & A_{22}\\
+\end{pmatrix}
+\begin{pmatrix}
+B_{11} & B_{12} \\
+B_{21} & B_{22}\\
+\end{pmatrix}
+ = \begin{pmatrix}
+A_{11} B_{11} + A_{12} B_{21} & A_{11} B_{12} + A_{12} B_{22}\\
+A_{21} B_{11} + A_{22} B_{21} & A_{21} B_{12} + A_{22} B_{22}\\
+\end{pmatrix}
+=
+\begin{pmatrix}
+C_{11} & C_{12} \\
+C_{21} & C_{22}\\
+\end{pmatrix}
+$$
+
+Se calculan los S y los T
+
+
+\[
+\begin{array}{lcl}
+	S_1 &=& A_{21} + A_{22} \\
+	S_2 &=& A_{21} + A_{22} - A_{11} \\
+	S_3 &=& A_{11} - A_{21}\\
+	S_4 &=& A_{12} -A_{21} - A_{22} + A_{11} \\
+\end{array}
+\]
+
+\[
+\begin{array}{lcl}
+	T_1 &=& B_12 - B_{11}\\
+	T_2 &=& B_{22} - B_{12} + B_{11}\\
+	T_3 &=& B_{22} - B_{12}\\
+	T_4 &=& B_{22} - B_{12} + B_{11} - B_{21}\\
+\end{array}
+\]
+Se calculan los P.
+\[
+\begin{array}{lcl}
+	P_1 &=& A_{11}B_{21}\\
+	P_2 &=& A_{12}B_{21}\\
+	P_3 &=& A_{12}B_{22} - A_{21}B_{22} - A_{22}B_{22} + A_{11}B_{22}\\
+	P_4 &=& A_{22}B_{22} - A_{22}B_{12} + A_{22}B_{11}  - A_{22}B_{21}\\
+	P_5 &=& A_{21}B_{11} - A_{21}B_{11} + A_{22}B_{12}- A_{22}B_{11}\\
+	P_6 &=& A_{21}B_{22} - A_{21}B_{12} + A_{21}B_{11} + A_{22}B_{22} - A_{22}B_{12} + A_{22}B_{11} - A_{11}B_{22}+ A_{11}B_{22}\\
+	&&  + A_{11}B_{12} - A_{11}B_{11}\\
+	P_7 &=& A_{11}B_{22} - A_{11}B_{12} - A_{21}B_{22} + A_{21}B_{12}\\
+\end{array}
+\]
+Se calculan los U
+\[
+\begin{array}{lcl}
+	U_{1} &=& A_{11}B_{11} + A_{12}B_{21}\\
+	U_{2} &=& A_{21}B_{22} - A_{21}B_{12} + A_{21}B_{11} + A_{22}B_{22} - A_{22}B_{12} + A_{22}B_{11} - A_{11}B_{22} + A_{11}B_{12}\\
+	U_{3} &=& A_{21}B_{11} + A_{22}B_{22} - A_{22}B_{12} + A_{22}B_{11}\\
+	U_{4} &=& A_{21}B_{22} + A_{22}B_{22} - A_{11}B_{22} + A_{11}B_{12}\\
+	U_{5} &=& A_{11}B_{12} + A_{12}B_{22}\\
+	U_{6} &=& A_{21}B_{11} + A_{22}B_{21}\\
+	U_{7} &=& A_{22}B_{22} + A_{21}B_{12}\\
+\end{array}
+\]
+
+De está forma se obtiene que
+
+$$
+\begin{pmatrix}
+	U_1 & U_5\\
+	U_6 & U_7\\
+\end{pmatrix}
+ = \begin{pmatrix}
+A_{11} B_{11} + A_{12} B_{21} & A_{11} B_{12} + A_{12} B_{22}\\
+A_{21} B_{11} + A_{22} B_{21} & A_{21} B_{12} + A_{22} B_{22}\\
+\end{pmatrix}
+=
+\begin{pmatrix}
+C_{11} & C_{12} \\
+C_{21} & C_{22}\\
+\end{pmatrix}
+$$
+
+Con  lo que se demuestra que el algoritmo de strassen es equivalente a la multiplicación de matrices.
+\section{Explicación algoritmo}
+
+
+\newpage
+
+\section{Formulación experimentos}
+
+
+\newpage
+
+\section{Información de Hardware y Software}
+
+
+\subsection{ Notebook - Danilo Abellá}
+\subsubsection{Software}
+\begin{itemize}
+\item SO: Xubuntu 16.04.1 LTS
+\item GMP Library
+\item Mousepad 0.4.0
+\end{itemize}
+
+\subsubsection{Hardware}
+\begin{itemize}
+\item AMD Turion(tm) X2 Dual-Core Mobile RM-72 2.10GHz
+\item Memoria (RAM): 4,00 GB(3,75 GB utilizable)
+\item Adaptador de pantalla: ATI Raedon HD 3200 Graphics
+\end{itemize}
+
+
+
+\subsection{Notebook - Sergio Salinas}
+\subsubsection{Software}
+\begin{itemize}
+\item  SO: ubuntu Gnome 16.04 LTS
+\item Compilador: gcc version 5.4.0 20160609
+\item Editor de text: Atom
+\end{itemize}
+
+\subsubsection{Hardware}
+\begin{itemize}
+\item Procesador: Intel Core i7-6500U CPU  2.50GHz x 4
+\item Video: Intel HD Graphics 520 (Skylake GT2)
+\end{itemize}
+\newpage
+
+
+
+\section{Curvas de desempeño de resultados}
+
+
+\newpage
+\section{Conclusiones}
+
+
+\end{document}
