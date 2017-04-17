@@ -235,10 +235,7 @@ Lo que es consistente con el costo $n^3M + (n^3 - n^2)A$.
 Después de probar con varias potencias de 2 se pudo concluir que el punto en donde Strassen lleva ventaja por sobre la multiplicación clásica es en $n_0$ = 16. 
 
 Esto es debido a que en los valores menores y mayores a 16 se puede apreciar dos rectas continuas con crecimiento distinto, mientras que cuando $n_0$ vale 16 se pueden ver los resultados como una sola recta.
-
-
 \section{Algoritmos Desarrollados}
-
 \begin{algorithm}[H]
  \KwData{Dos matrices A y B de orden n, $n_0$}
  \KwResult{Matriz C}
@@ -253,21 +250,21 @@ $S_4 \leftarrow  A_{12} - S_{2}$; $\;$  $T_4 \leftarrow  T_{2} -  B_{21}$\;
 
 
  \eIf {n/4 $\leq$ $n_0$ }{
-$ P_1  \leftarrow A_{11}\cdot B{11}$;
-$ P_2  \leftarrow A_{12}\cdot B{21}$\;
-$ P_3  \leftarrow S_{4}\cdot B{22}$;
-$ P_4  \leftarrow A_{22}\cdot T{4}$\;
-$ P_5  \leftarrow S_{1}\cdot T{1}$;
-$ P_6  \leftarrow S_{2}\cdot T{2}$\;
-$ P_7  \leftarrow S_{3}\cdot T{3}$;
+$ P_1  \leftarrow A_{11}\cdot B_{11}$;
+$ P_2  \leftarrow A_{12}\cdot B_{21}$\;
+$ P_3  \leftarrow S_{4}\cdot B_{22}$;
+$ P_4  \leftarrow A_{22}\cdot T_{4}$\;
+$ P_5  \leftarrow S_{1}\cdot T_{1}$;
+$ P_6  \leftarrow S_{2}\cdot T_{2}$\;
+$ P_7  \leftarrow S_{3}\cdot T_{3}$;
 }{
-$ P_1  \leftarrow strassen(A_{11} ,B{11},n, n_0  )$\;
-$ P_2  \leftarrow strassen(A_{12} ,B{21},n, n_0  )$\;
-$ P_3  \leftarrow strassen(S_{4} ,B{22},n, n_0  )$\;
-$ P_4  \leftarrow strassen(A_{22}, T{4},n, n_0  )$\;
-$ P_5  \leftarrow strassen(S_{1}, T{1},n, n_0  )$\;
-$ P_6  \leftarrow strassen(S_{2}, T{2},n, n_0  )$\;
-$ P_7  \leftarrow strassen(S_{3}, T{3},n, n_0  )$	\;
+$ P_1  \leftarrow strassen(A_{11} ,B_{11},n, n_0  )$\;
+$ P_2  \leftarrow strassen(A_{12} ,B_{21},n, n_0  )$\;
+$ P_3  \leftarrow strassen(S_{4} ,B_{22},n, n_0  )$\;
+$ P_4  \leftarrow strassen(A_{22}, T_{4},n, n_0  )$\;
+$ P_5  \leftarrow strassen(S_{1}, T_{1},n, n_0  )$\;
+$ P_6  \leftarrow strassen(S_{2}, T_{2},n, n_0  )$\;
+$ P_7  \leftarrow strassen(S_{3}, T_{3},n, n_0  )$	\;
 }
 $U_1  \leftarrow P_1 + P_2$\;
 $U_2  \leftarrow P_1 + P_6$\;
