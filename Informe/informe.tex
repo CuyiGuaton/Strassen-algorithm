@@ -222,7 +222,7 @@ $$T(n) \in O(n^{\log_2 7}) = O ( n^{2.80735} )$$
 %http://www.lcc.uma.es/~av/Libro/CAP3.pdf
 La multiplicación clásica de matrices cuadradas de orden 2 debe hacer un total de 8 multiplicaciones escalares y 4 sumas de coste $n^2$, por lo que si quiere trabajar con bloques de matrices cuadradas de orden $n = 2^k$ el total de multiplicaciones tendría como relación de recurrencia:
 
-$$ T(2^k) = 8\cdot T( 2^{k-1}) + 4n^2 $$
+$$ T(2^k) = 8\cdot T( 2^{k-1}) + 4(2^k)^2 $$
 
 Usando el teorema maestro se obtiene que la complejidad de la multiplicaciones es
 
