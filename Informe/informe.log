@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9.6210 64-bit) (preloaded format=pdflatex 2017.3.24)  16 APR 2017 18:21
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9.6210 64-bit) (preloaded format=pdflatex 2017.3.24)  17 APR 2017 02:29
 entering extended mode
 **./informe.tex
 (informe.tex
@@ -1179,7 +1179,7 @@ LaTeX Info: Redefining \nameref on input line 64.
 \@outlinefile=\write4
 \openout4 = `informe.out'.
 
- <UDSCNRJ.png, id=58, 172.4844pt x 247.8861pt>
+ <UDSCNRJ.png, id=82, 172.4844pt x 247.8861pt>
 File: UDSCNRJ.png Graphic file (type png)
 
 <use UDSCNRJ.png>
@@ -1213,7 +1213,14 @@ ne 107.
 
 Package xcolor Warning: Incompatible color definition on input line 107.
 
-(informe.toc)
+(informe.toc
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 18.
+ ("E:\programs file\miktex\tex\latex\base\omscmr.fd"
+File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 18.
+)
 \tf@toc=\write5
 \openout5 = `informe.toc'.
 
@@ -1222,91 +1229,223 @@ Package xcolor Warning: Incompatible color definition on input line 107.
 Package xcolor Warning: Incompatible color definition on input line 110.
 
 
-Package xcolor Warning: Incompatible color definition on input line 112.
+Package xcolor Warning: Incompatible color definition on input line 116.
 
 
-Overfull \hbox (4.1175pt too wide) detected at line 134
+Package xcolor Warning: Incompatible color definition on input line 118.
+
+
+Overfull \hbox (4.1175pt too wide) detected at line 139
 \OML/cmm/m/it/12 AB \OT1/cmr/m/n/12 = [] [] = [] = []
  []
 
 [3]
 
-Package xcolor Warning: Incompatible color definition on input line 201.
+Package xcolor Warning: Incompatible color definition on input line 208.
+
+
+Package xcolor Warning: Incompatible color definition on input line 210.
+
+
+Package xcolor Warning: Incompatible color definition on input line 220.
 
 [4]
 
-Package xcolor Warning: Incompatible color definition on input line 206.
-
-[5]
-
-Package xcolor Warning: Incompatible color definition on input line 211.
+Package xcolor Warning: Incompatible color definition on input line 233.
 
 
-Package xcolor Warning: Incompatible color definition on input line 214.
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 233.
 
 
-Package xcolor Warning: Incompatible color definition on input line 215.
-
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 217.
-
-("E:\programs file\miktex\tex\latex\base\omscmr.fd"
-File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
-)
-LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 217.
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `subscript' on input line 233.
 
 
-Package xcolor Warning: Incompatible color definition on input line 222.
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 233.
 
 
-Package xcolor Warning: Incompatible color definition on input line 231.
+Package xcolor Warning: Incompatible color definition on input line 240.
+
+[5] [6]
+Overfull \vbox (4.06897pt too high) has occurred while \output is active []
 
 
-Package xcolor Warning: Incompatible color definition on input line 232.
+[7] [8]
+
+Package xcolor Warning: Incompatible color definition on input line 329.
 
 
-Package xcolor Warning: Incompatible color definition on input line 239.
+Package xcolor Warning: Incompatible color definition on input line 332.
 
-[6]
 
-Package xcolor Warning: Incompatible color definition on input line 248.
+Package xcolor Warning: Incompatible color definition on input line 333.
 
-[7]
 
-Package xcolor Warning: Incompatible color definition on input line 252.
+Package xcolor Warning: Incompatible color definition on input line 340.
 
-[8]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 255.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 255.
+
+Package xcolor Warning: Incompatible color definition on input line 349.
+
+
+Package xcolor Warning: Incompatible color definition on input line 350.
+
+
+Package xcolor Warning: Incompatible color definition on input line 357.
+
+[9]
+
+Package xcolor Warning: Incompatible color definition on input line 366.
+
+
+Package xcolor Warning: Incompatible color definition on input line 368.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 368.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `subscript' on input line 368.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 368.
+
+<normal.png, id=166, 758.835pt x 426.59375pt>
+File: normal.png Graphic file (type png)
+ <use normal.png>
+Package pdftex.def Info: normal.png used on input line 369.
+(pdftex.def)             Requested size: 455.30452pt x 255.95822pt.
+
+<n0-2.png, id=167, 758.835pt x 426.59375pt>
+File: n0-2.png Graphic file (type png)
+ <use n0-2.png>
+Package pdftex.def Info: n0-2.png used on input line 371.
+(pdftex.def)             Requested size: 455.30452pt x 255.95822pt.
+
+Overfull \hbox (9.24954pt too wide) in paragraph at lines 371--372
+[][] 
+ []
+
+<n0-16.png, id=168, 758.835pt x 426.59375pt>
+File: n0-16.png Graphic file (type png)
+ <use n0-16.png>
+Package pdftex.def Info: n0-16.png used on input line 373.
+(pdftex.def)             Requested size: 455.30452pt x 255.95822pt.
+
+Overfull \hbox (9.24954pt too wide) in paragraph at lines 373--374
+[][] 
+ []
+
+[10 <./normal.png (PNG copy)> <./n0-2.png (PNG copy)>]
+<n0-128.png, id=173, 758.835pt x 426.59375pt>
+File: n0-128.png Graphic file (type png)
+ <use n0-128.png>
+Package pdftex.def Info: n0-128.png used on input line 375.
+(pdftex.def)             Requested size: 455.30452pt x 255.95822pt.
+
+Overfull \hbox (9.24954pt too wide) in paragraph at lines 375--376
+[][] 
+ []
+
+
+Package xcolor Warning: Incompatible color definition on input line 377.
+
+LaTeX Font Info:    Try loading font information for OMS+cmss on input line 377
+.
+LaTeX Font Info:    No file OMScmss.fd. on input line 377.
+
+LaTeX Font Warning: Font shape `OMS/cmss/bx/n' undefined
+(Font)              using `OMS/cmsy/m/n' instead
+(Font)              for symbol `textbraceleft' on input line 377.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 377.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `subscript' on input line 377.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 377.
+
+<1-6.png, id=174, 758.835pt x 426.59375pt>
+File: 1-6.png Graphic file (type png)
+ <use 1-6.png>
+Package pdftex.def Info: 1-6.png used on input line 379.
+(pdftex.def)             Requested size: 455.30452pt x 255.95822pt.
+ [11 <./n0-16.png (PNG copy)> <./n0-128.png (PNG copy)>]
+<7-12.png, id=179, 757.83125pt x 426.59375pt>
+File: 7-12.png Graphic file (type png)
+ <use 7-12.png>
+Package pdftex.def Info: 7-12.png used on input line 381.
+(pdftex.def)             Requested size: 454.70226pt x 255.95822pt.
+
+Overfull \hbox (8.64728pt too wide) in paragraph at lines 381--382
+[][] 
+ []
+
+<13-16.png, id=180, 758.835pt x 426.59375pt>
+File: 13-16.png Graphic file (type png)
+ <use 13-16.png>
+Package pdftex.def Info: 13-16.png used on input line 383.
+(pdftex.def)             Requested size: 455.30452pt x 255.95822pt.
+
+Overfull \hbox (9.24954pt too wide) in paragraph at lines 383--384
+[][] 
+ []
+
+[12 <./1-6.png (PNG copy)> <./7-12.png (PNG copy)>] [13 <./13-16.png (PNG copy)
+>]
+
+Package xcolor Warning: Incompatible color definition on input line 385.
+
+[14]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 389.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 389.
  (informe.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 255.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 255.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 389.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 389.
 Package rerunfilecheck Info: File `informe.out' has not changed.
-(rerunfilecheck)             Checksum: 15354A3AEDEE9DF4A3B0F4776875603C;850.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 255.
+(rerunfilecheck)             Checksum: 482086B694DDB16287E25D89B1B3340B;1340.
+
+
+LaTeX Font Warning: Some font shapes were not available, defaults substituted.
+
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 389.
  )
 (\end occurred inside a group at level 1)
 
 ### simple group (level 1) entered at line 1061 ({)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 20668 strings out of 493333
- 388311 string characters out of 3140915
- 654764 words of memory out of 3000000
- 23816 multiletter control sequences out of 15000+200000
- 12085 words of font info for 46 fonts, out of 3000000 for 9000
+ 20768 strings out of 493333
+ 389551 string characters out of 3140915
+ 653770 words of memory out of 3000000
+ 23881 multiletter control sequences out of 15000+200000
+ 16775 words of font info for 65 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 55i,12n,59p,8839b,14671s stack positions out of 5000i,500n,10000p,200000b,50000s
-<E:/programs file/miktex/fonts/type1/public/amsfonts/cm/cmcsc10
-.pfb><E:/programs file/miktex/fonts/type1/public/amsfonts/cm/cmex10.pfb><E:/pro
-grams file/miktex/fonts/type1/public/amsfonts/cm/cmmi12.pfb><E:/programs file/m
-iktex/fonts/type1/public/amsfonts/cm/cmr12.pfb><E:/programs file/miktex/fonts/t
-ype1/public/amsfonts/cm/cmr17.pfb><E:/programs file/miktex/fonts/type1/public/a
-msfonts/cm/cmr8.pfb><E:/programs file/miktex/fonts/type1/public/amsfonts/cm/cms
-sbx10.pfb><E:/programs file/miktex/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on informe.pdf (8 pages, 194242 bytes).
+ 55i,17n,59p,8839b,14771s stack positions out of 5000i,500n,10000p,200000b,50000s
+<E:/programs file/miktex/fonts/type1/public/amsfonts/cm/cmbx10.
+pfb><E:/programs file/miktex/fonts/type1/public/amsfonts/cm/cmbx12.pfb><E:/prog
+rams file/miktex/fonts/type1/public/amsfonts/cm/cmbx8.pfb><E:/programs file/mik
+tex/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><E:/programs file/miktex/fonts/t
+ype1/public/amsfonts/cm/cmex10.pfb><E:/programs file/miktex/fonts/type1/public/
+amsfonts/cm/cmmi12.pfb><E:/programs file/miktex/fonts/type1/public/amsfonts/cm/
+cmmi8.pfb><E:/programs file/miktex/fonts/type1/public/amsfonts/cm/cmr12.pfb><E:
+/programs file/miktex/fonts/type1/public/amsfonts/cm/cmr17.pfb><E:/programs fil
+e/miktex/fonts/type1/public/amsfonts/cm/cmr6.pfb><E:/programs file/miktex/fonts
+/type1/public/amsfonts/cm/cmr8.pfb><E:/programs file/miktex/fonts/type1/public/
+amsfonts/cm/cmssbx10.pfb><E:/programs file/miktex/fonts/type1/public/amsfonts/c
+m/cmsy10.pfb><E:/programs file/miktex/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
+<E:/programs file/miktex/fonts/type1/public/amsfonts/cm/cmti12.pfb>
+Output written on informe.pdf (14 pages, 426976 bytes).
 PDF statistics:
- 150 PDF objects out of 1000 (max. 8388607)
- 23 named destinations out of 1000 (max. 500000)
- 122 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 254 PDF objects out of 1000 (max. 8388607)
+ 43 named destinations out of 1000 (max. 500000)
+ 205 words of extra memory for PDF output out of 10000 (max. 10000000)
 

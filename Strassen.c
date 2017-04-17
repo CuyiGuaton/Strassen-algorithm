@@ -1,11 +1,4 @@
-////////Fuentes, agrema más si encontrás
-//https://gist.github.com/wzpan/6504468
-// https://github.com/sajjadpoores/strassen_matrix_multiplication3/blob/master/strassen.cpp
-
 //----------------------------------------------------------------------------------------//
-
-
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -24,7 +17,7 @@ void matrixSub(int n, double **A, double **B, double **result);
 void generateRandomMatrix(int n, double **matrix){
   for (size_t i = 0; i < n; i++)
     for (size_t j = 0; j < n; j++)
-      matrix[i][j] = rand() % 10;
+      matrix[i][j] = rand() % 20 + (-10);
 }
 
 //Show a matrix
@@ -55,7 +48,7 @@ void matrixSum(int n, double **A, double **B, double **result){
               result[i][j] = A[i][j] + B[i][j];
 }
 
-//A - B
+//A- B
 void matrixSub(int n, double **A, double **B, double **result){
   for(int i=0; i<n; i++)
       for(int j=0; j<n; j++)
@@ -175,7 +168,7 @@ void strassen(int n, double **A, double **B, double **C,int n0) {
   }
 
   //Si se llega a n0 se acaba la recursividad
-  if(n <= n0) //2-order
+  if(n < n0) //2-order
   {
   	matrixMultiply(n, A, B, C);
 
